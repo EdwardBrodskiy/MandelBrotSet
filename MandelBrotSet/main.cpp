@@ -11,7 +11,7 @@ bool in_window(sf::Vector2i mouse_pos);
 
 int height = 1080;
 int width = 1920;
-
+// test change
 int main() {
 	
 	MandelBrot mb(width, height);
