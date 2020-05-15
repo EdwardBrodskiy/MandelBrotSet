@@ -20,7 +20,7 @@ This is a mandelbrot/ buddahbrot renderer created using cpp and sfml. Based on t
 
 resolution 1920 by 1080p
 
-f(z, c) is applied 1500 times
+f(z, c) is applied 500 times
 
 center is at 0 + 0i
 
