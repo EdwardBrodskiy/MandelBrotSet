@@ -65,7 +65,12 @@ void MandelBrot::change_scale_by(long double factor) {
 }
 
 void MandelBrot::set_itterations(int new_itterations) {
-	itterations = new_itterations;
+	if (new_itterations > 0) {
+		itterations = new_itterations;
+	}
+	else {
+		itterations = 0;
+	}
 	activate();
 }
 
@@ -135,8 +140,6 @@ void MandelBrot::render_multithread() {
 	for (int i = 0; i < number_of_threads; i++) {
 		threads[i].join();
 	}
-
-	
 }
 
 void MandelBrot::render_subsection(int offset, int jump) {

@@ -40,7 +40,7 @@ int main() {
 
 		}
 		
-		if (input_timer.has_elapsed(200)) {
+		if (input_timer.has_elapsed(100)) {
 			bool input = true;
 			// Mouse input
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
@@ -63,10 +63,10 @@ int main() {
 
 			}// Keyboard input
 			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Equal)) {
-				mb.change_itterations_by(500);
+				mb.change_itterations_by(128);
 			}
 			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Dash)) {
-				mb.change_itterations_by(-500);
+				mb.change_itterations_by(-128);
 			}
 			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::B)) {
 				image.update(mb.get_buddah_brot());

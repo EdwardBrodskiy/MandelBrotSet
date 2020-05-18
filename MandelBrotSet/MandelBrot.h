@@ -16,7 +16,7 @@ private:
 
 	Complex center;
 	long double scale = (long double)2;
-	int itterations = 500;
+	int itterations = 128;
 
 	Grid* image;
 
