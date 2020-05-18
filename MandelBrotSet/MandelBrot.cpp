@@ -140,6 +140,7 @@ void MandelBrot::render_multithread() {
 	for (int i = 0; i < number_of_threads; i++) {
 		threads[i].join();
 	}
+
 }
 
 void MandelBrot::render_subsection(int offset, int jump) {
@@ -235,7 +236,7 @@ int MandelBrot::itterations_to_escape(Complex c) {
 	
 	for (int i = 0; i < itterations; i++) {
 		if (z.magintude_squared() > 4) {
-			delete stop_points;
+			delete[] stop_points;
 			return i;
 		};
 		z = mandelbrot_eq(z, c);
@@ -249,7 +250,7 @@ int MandelBrot::itterations_to_escape(Complex c) {
 			add_to_buddah_brot(i, stop_points[i]);
 		}
 	}
-	delete stop_points;
+	delete[] stop_points;
 	return -1;
 }
 
