@@ -1,5 +1,5 @@
 #include "MandelBrot.h"
-
+#include <thread>
 
 MandelBrot::MandelBrot(int width_in, int height_in) {
 	width = width_in;
@@ -25,7 +25,7 @@ sf::Uint8* MandelBrot::feed_result_of_next_activity() {
 		if (buddah_outdated) {
 			clear_buddah();
 		}
-		render();
+		render_multithread();
 		active = false; // TODO: add a more dynamic system
 	}
 	return image->get_full();
@@ -103,8 +103,10 @@ void MandelBrot::render() {
 	for (int pixel_column = 0; pixel_column < width; pixel_column++) {
 		for (int pixel_row = 0; pixel_row < height; pixel_row++) {
 			int point_index = pixel_column + pixel_row * width;
+
 			long double real = pixel_column * 2 * scale / width - scale + center.real;
 			long double imaginary = (pixel_row * 2 * scale / height - scale + center.imaginary) * w_to_h_ratio;
+
 			Complex c(real, imaginary);
 			int time = itterations_to_escape(c);
 
@@ -120,6 +122,49 @@ void MandelBrot::render() {
 
 
 }
+
+void MandelBrot::render_multithread() {
+	int number_of_threads = 8;
+
+	std::thread* threads = new std::thread[number_of_threads];
+
+	for (int i = 0; i < number_of_threads; i++) {
+		threads[i] = std::thread(&MandelBrot::render_subsection, this, i, number_of_threads);
+	}
+
+	for (int i = 0; i < number_of_threads; i++) {
+		threads[i].join();
+	}
+
+	
+}
+
+void MandelBrot::render_subsection(int offset, int jump) {
+	int pixel_row = offset;
+	for (int pixel_column = 0; pixel_column < width; pixel_column++) {
+		while(pixel_row < height) {
+			int point_index = pixel_column + pixel_row * width;
+
+			long double real = pixel_column * 2 * scale / width - scale + center.real;
+			long double imaginary = (pixel_row * 2 * scale / height - scale + center.imaginary) * w_to_h_ratio;
+
+			Complex c(real, imaginary);
+			int time = itterations_to_escape(c);
+
+
+			if (time != -1) {
+				image->set_colour_by_hue(point_index, time % 360);
+			}
+			else {
+				image->set_colour_to_point(point_index, 0, 0, 0);
+			}
+			pixel_row += jump;
+		}
+		pixel_row %= height;
+	}
+}
+
+
 
 void MandelBrot::clear_buddah() {
 	for (int i = 0; i < width * height; i++) {

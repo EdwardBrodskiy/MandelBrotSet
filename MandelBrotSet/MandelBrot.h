@@ -57,6 +57,10 @@ private:
 
 	void render();
 
+	void render_multithread();
+
+	void render_subsection(int offset, int jump);
+
 	void clear_buddah();
 
 	void add_to_buddah_brot(int i, int index);

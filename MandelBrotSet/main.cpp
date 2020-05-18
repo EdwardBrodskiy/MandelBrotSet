@@ -13,7 +13,7 @@ int height = 1080;
 int width = 1920;
 
 int main() {
-	
+
 	MandelBrot mb(width, height);
 
 	sf::RenderWindow window(sf::VideoMode(width, height), "MandelBrotSet", sf::Style::Fullscreen);
