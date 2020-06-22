@@ -3,7 +3,7 @@ Responsible for managing and holding a bitmap image
 */
 #pragma once
 #include <SFML\Graphics.hpp>
-#include "common_maths_func.h"
+#include <math.h>
 
 struct Grid {
 

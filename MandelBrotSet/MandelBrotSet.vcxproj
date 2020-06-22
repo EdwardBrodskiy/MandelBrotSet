@@ -131,7 +131,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="common_maths_func.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MandelBrot.cpp" />
@@ -139,7 +138,6 @@
     <ClCompile Include="useful_garbage.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="common_maths_func.h" />
     <ClInclude Include="Grid.h" />
     <ClInclude Include="MandelBrot.h" />
     <ClInclude Include="Timer.h" />

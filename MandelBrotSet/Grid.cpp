@@ -23,7 +23,7 @@ void Grid::set_colour_by_hue(int index, float hue) {
 	// light is set to 0.5 and saturation is set to 1 so we only need to get x
 	float c = 1;
 
-	float x = c * (1.0 - modulus(mod(hue / 60.0, 2.0) - 1.0));
+	float x = c * (1.0 - abs(fmod(hue / 60.0, 2.0) - 1.0));
 
 	float m = 0;
 
