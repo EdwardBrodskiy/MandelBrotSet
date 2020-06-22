@@ -70,7 +70,7 @@ int main() {
 				mandelBrot.change_itterations_by(-128);
 			}
 			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::B)) {
-				image.update(mandelBrot.get_buddah_brot());
+				image.update(mandelBrot.get_buddha_brot());
 				window.draw(sprite);
 				window.display();
 			}

@@ -7,8 +7,8 @@ MandelBrot::MandelBrot(int width_in, int height_in) {
 	height = height_in;
 	w_to_h_ratio = (float)height / (float)width;
 	image = new Grid(width, height);
-	if (do_buddah_brot) {
-		buddah_image = new Grid(width, height);
+	if (do_buddha_brot) {
+		buddha_image = new Grid(width, height);
 	}
 	activate();
 }
@@ -23,8 +23,8 @@ sf::Uint8* MandelBrot::feed_result_of_next_activity() {
 		pre_rendering = false;
 		rendering = true;
 	} else if (rendering) {
-		if (buddah_outdated) {
-			clear_buddah();
+		if (buddha_outdated) {
+			clear_buddha();
 		}
 		render_multithread();
 		active = false; // TODO: add a more dynamic system
@@ -32,9 +32,9 @@ sf::Uint8* MandelBrot::feed_result_of_next_activity() {
 	return image->get_full();
 }
 
-sf::Uint8* MandelBrot::get_buddah_brot() {
-	if (do_buddah_brot) {
-		return buddah_image->get_full();
+sf::Uint8* MandelBrot::get_buddha_brot() {
+	if (do_buddha_brot) {
+		return buddha_image->get_full();
 	}
 	return feed_result_of_next_activity();
 }
@@ -82,8 +82,8 @@ void MandelBrot::change_itterations_by(int amount) {
 void MandelBrot::activate() {
 	if (not active) {
 		active = true;
-		if (do_buddah_brot) {
-			buddah_outdated = true;
+		if (do_buddha_brot) {
+			buddha_outdated = true;
 		}
 		if (do_pre_render) {
 			pre_rendering = true;
@@ -171,18 +171,18 @@ void MandelBrot::render_subsection(int offset, int jump) {
 
 
 
-void MandelBrot::clear_buddah() {
+void MandelBrot::clear_buddha() {
 	for (int i = 0; i < width * height; i++) {
-		buddah_image->set_colour_to_point(i, 0, 0, 0);
+		buddha_image->set_colour_to_point(i, 0, 0, 0);
 	}
 }
 
-void MandelBrot::add_to_buddah_brot(int itteration, int index) {
+void MandelBrot::add_to_buddha_brot(int itteration, int index) {
 	if (-1 < index and index < width * height) {
 		
-		int r = buddah_image->r(index);
-		int g = buddah_image->g(index);
-		int b = buddah_image->b(index);
+		int r = buddha_image->r(index);
+		int g = buddha_image->g(index);
+		int b = buddha_image->b(index);
 		if (0) {
 			if (itteration < itterations / 3) {
 				if (r < 255) {
@@ -225,7 +225,7 @@ void MandelBrot::add_to_buddah_brot(int itteration, int index) {
 
 		}
 		
-		buddah_image->set_colour_to_point(index, r, g, b);
+		buddha_image->set_colour_to_point(index, r, g, b);
 	}
 }
 
@@ -241,14 +241,14 @@ int MandelBrot::itterations_to_escape(std::complex<long double> c) {
 			return i;
 		};
 		z = mandelbrot_eq(z, c);
-		if (do_buddah_brot) {
+		if (do_buddha_brot) {
 			stop_points[i] = complex_to_index(z);
 		}
 		
 	};
-	if (do_buddah_brot) {
+	if (do_buddha_brot) {
 		for (int i = 0; i < itterations; i++) {
-			add_to_buddah_brot(i, stop_points[i]);
+			add_to_buddha_brot(i, stop_points[i]);
 		}
 	}
 	delete[] stop_points;

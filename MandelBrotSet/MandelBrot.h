@@ -1,5 +1,5 @@
 /* MandelBrot Object
-Manages the rendering of a Mandelbrot fractal as well as the Buddahbrot fractal 
+Manages the rendering of a Mandelbrot fractal as well as the Buddhabrot fractal 
 */
 #pragma once
 #include "Grid.h"
@@ -11,7 +11,7 @@ public:
 	// settings on what stages should be included in the rendering process
 	bool do_render = true;
 	bool do_pre_render = false;
-	bool do_buddah_brot = true;
+	bool do_buddha_brot = true;
 private:
 	bool active = false; // weather there are sill renders to do from new commands
 
@@ -24,10 +24,10 @@ private:
 
 	Grid* image; // where we store the render of the MandelBrot
 
-	Grid* buddah_image; // where we store the render of the BuddahBrot
+	Grid* buddha_image; // where we store the render of the BuddhaBrot
 
 	// basic flags
-	bool buddah_outdated = false;
+	bool buddha_outdated = false;
 	bool pre_rendering = false;
 	bool rendering = false;
 public:
@@ -37,7 +37,7 @@ public:
 
 	sf::Uint8* feed_result_of_next_activity(); // get the next render
 
-	sf::Uint8* get_buddah_brot(); // get the buddag brot image
+	sf::Uint8* get_buddha_brot(); // get the buddag brot image
 
 	bool is_active();
 
@@ -66,9 +66,9 @@ private:
 
 	void render_subsection(int offset, int jump); // render every pixel starting at offset with gaps of jump
 
-	void clear_buddah(); // clear the buddahBrot image
+	void clear_buddha(); // clear the buddhaBrot image
 
-	void add_to_buddah_brot(int i, int index); // add a trace point to buddahBrot
+	void add_to_buddha_brot(int i, int index); // add a trace point to buddhaBrot
 
 	int itterations_to_escape(std::complex<long double> c); // calculates the ecape time for a point 
 
