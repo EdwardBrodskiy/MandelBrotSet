@@ -5,7 +5,7 @@
 #include "Grid.h"
 #include "MandelBrot.h"
 
-Complex mouse_pos_to_complex(sf::Vector2i mouse_pos, long double scale, Complex old_center);
+std::complex<long double> mouse_pos_to_complex(sf::Vector2i mouse_pos, long double scale, std::complex<long double> old_center);
 
 bool in_window(sf::Vector2i mouse_pos);
 
@@ -47,7 +47,7 @@ int main() {
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 				mouse_pos = sf::Mouse::getPosition(window);
 				if (in_window(mouse_pos)) {
-					Complex new_center = mouse_pos_to_complex(mouse_pos, mandelBrot.get_scale(), mandelBrot.get_center());
+					std::complex<long double> new_center = mouse_pos_to_complex(mouse_pos, mandelBrot.get_scale(), mandelBrot.get_center());
 					mandelBrot.set_center(new_center);
 					mandelBrot.change_scale_by(0.5);
 					window.clear();
@@ -56,7 +56,7 @@ int main() {
 			else if (sf::Mouse::isButtonPressed(sf::Mouse::Right)) {
 				mouse_pos = sf::Mouse::getPosition(window);
 				if (in_window(mouse_pos)) {
-					Complex new_center = mouse_pos_to_complex(mouse_pos, mandelBrot.get_scale(), mandelBrot.get_center());
+					std::complex<long double> new_center = mouse_pos_to_complex(mouse_pos, mandelBrot.get_scale(), mandelBrot.get_center());
 					mandelBrot.set_center(new_center);
 					mandelBrot.change_scale_by(2.0);
 					window.clear();
@@ -97,10 +97,10 @@ int main() {
 }
 
 /* convert mouse cooridnates to complex coordiante on screen */
-Complex mouse_pos_to_complex(sf::Vector2i mouse_pos, long double scale, Complex old_center) {
-	Complex new_center;
-	new_center.real = mouse_pos.x * 2.f * scale / width - scale + old_center.real;
-	new_center.imaginary = mouse_pos.y * 2.f * scale / height - scale + old_center.imaginary;
+std::complex<long double> mouse_pos_to_complex(sf::Vector2i mouse_pos, long double scale, std::complex<long double> old_center) {
+	std::complex<long double> new_center;
+	new_center.real(mouse_pos.x * 2.f * scale / width - scale + old_center.real());
+	new_center.imag(mouse_pos.y * 2.f * scale / height - scale + old_center.imag());
 	return new_center;
 
 }

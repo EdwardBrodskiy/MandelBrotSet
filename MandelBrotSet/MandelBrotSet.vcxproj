@@ -132,7 +132,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="common_maths_func.cpp" />
-    <ClCompile Include="Complex.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MandelBrot.cpp" />
@@ -141,7 +140,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common_maths_func.h" />
-    <ClInclude Include="Complex.h" />
     <ClInclude Include="Grid.h" />
     <ClInclude Include="MandelBrot.h" />
     <ClInclude Include="Timer.h" />

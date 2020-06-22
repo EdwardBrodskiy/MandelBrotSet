@@ -1,6 +1,6 @@
 #pragma once
 #include "Grid.h"
-#include "Complex.h"
+#include <complex>
 
 class MandelBrot
 {
@@ -14,7 +14,7 @@ private:
 	int width, height;
 	float w_to_h_ratio;
 
-	Complex center;
+	std::complex<long double> center;
 	long double scale = (long double)2;
 	int itterations = 128;
 
@@ -36,9 +36,9 @@ public:
 
 	bool is_active();
 
-	Complex get_center();
+	std::complex<long double> get_center();
 
-	void set_center(Complex center);
+	void set_center(std::complex<long double> center);
 
 	long double get_scale();
 
@@ -65,11 +65,11 @@ private:
 
 	void add_to_buddah_brot(int i, int index);
 
-	int itterations_to_escape(Complex c);
+	int itterations_to_escape(std::complex<long double> c);
 
-	Complex mandelbrot_eq(Complex z, Complex c);
+	std::complex<long double> mandelbrot_eq(std::complex<long double> z, std::complex<long double> c);
 
-	int complex_to_index(Complex num);
+	int complex_to_index(std::complex<long double> num);
 
 
 };

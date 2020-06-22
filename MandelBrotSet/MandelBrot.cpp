@@ -1,6 +1,7 @@
 #include "MandelBrot.h"
 #include <thread>
 
+
 MandelBrot::MandelBrot(int width_in, int height_in) {
 	width = width_in;
 	height = height_in;
@@ -42,11 +43,11 @@ bool MandelBrot::is_active() {
 	return active;
 }
 
-Complex MandelBrot::get_center() {
+std::complex<long double> MandelBrot::get_center() {
 	return center;
 }
 
-void MandelBrot::set_center(Complex center_in) {
+void MandelBrot::set_center(std::complex<long double> center_in) {
 	center = center_in;
 	activate();
 }
@@ -109,10 +110,10 @@ void MandelBrot::render() {
 		for (int pixel_row = 0; pixel_row < height; pixel_row++) {
 			int point_index = pixel_column + pixel_row * width;
 
-			long double real = pixel_column * 2 * scale / width - scale + center.real;
-			long double imaginary = (pixel_row * 2 * scale / height - scale + center.imaginary) * w_to_h_ratio;
+			long double real = pixel_column * 2 * scale / width - scale + center.real();
+			long double imaginary = (pixel_row * 2 * scale / height - scale + center.imag()) * w_to_h_ratio;
 
-			Complex c(real, imaginary);
+			std::complex<long double> c(real, imaginary);
 			int time = itterations_to_escape(c);
 
 
@@ -149,10 +150,10 @@ void MandelBrot::render_subsection(int offset, int jump) {
 		while(pixel_row < height) {
 			int point_index = pixel_column + pixel_row * width;
 
-			long double real = pixel_column * 2 * scale / width - scale + center.real;
-			long double imaginary = (pixel_row * 2 * scale / height - scale + center.imaginary) * w_to_h_ratio;
+			long double real = pixel_column * 2 * scale / width - scale + center.real();
+			long double imaginary = (pixel_row * 2 * scale / height - scale + center.imag()) * w_to_h_ratio;
 
-			Complex c(real, imaginary);
+			std::complex<long double> c(real, imaginary);
 			int time = itterations_to_escape(c);
 
 
@@ -228,14 +229,14 @@ void MandelBrot::add_to_buddah_brot(int itteration, int index) {
 	}
 }
 
-int MandelBrot::itterations_to_escape(Complex c) {
-	Complex z(0, 0);
+int MandelBrot::itterations_to_escape(std::complex<long double> c) {
+	std::complex<long double> z(0, 0);
 	
 	int* stop_points;
 	stop_points = new int[itterations];
 	
 	for (int i = 0; i < itterations; i++) {
-		if (z.magintude_squared() > 4) {
+		if (std::abs(z) > 2) {
 			delete[] stop_points;
 			return i;
 		};
@@ -254,12 +255,12 @@ int MandelBrot::itterations_to_escape(Complex c) {
 	return -1;
 }
 
-Complex MandelBrot::mandelbrot_eq(Complex z, Complex c) {
+std::complex<long double> MandelBrot::mandelbrot_eq(std::complex<long double> z, std::complex<long double> c) {
 	return z * z + c;
 }
 
-int MandelBrot::complex_to_index(Complex num) {
-	int column = int(width / (2 * scale) * (num.real + scale - center.real));
-	int row = int(height / (2 * scale) * (num.imaginary / w_to_h_ratio + scale - center.imaginary));
+int MandelBrot::complex_to_index(std::complex<long double> num) {
+	int column = int(width / (2 * scale) * (num.real() + scale - center.real()));
+	int row = int(height / (2 * scale) * (num.imag() / w_to_h_ratio + scale - center.imag()));
 	return column + row * width;
 }
