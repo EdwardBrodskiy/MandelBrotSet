@@ -36,3 +36,5 @@ Also avliable under the sample images folder
 
 ![Buddhabrot set](https://github.com/EdwardBrodskiy/MandelBrotSet/blob/master/Sample%20images/buddah%201080%20layered.png)
 
+![Mandelbrot Set example 1](https://github.com/EdwardBrodskiy/MandelBrotSet/blob/master/Sample%20images/MandelBrotSe%201080%201.png)
+
