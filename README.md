@@ -1,8 +1,8 @@
 # MandelBrotSet
 
-This is a mandelbrot/ buddahbrot renderer created using cpp and sfml. Based on this eq f(z, c) = z^2 + c.
+This Program renders the mandelbrot set as well as the BuddhaBrot set  and allows you to explore it. It makes use of multiple cores on the cpu to make the rendering fast as well as using a checkered rendering approach to not overload one particular core.  The program uses sfml library to produce the visuals. Based on this eq f(z, c) = z^2 + c.
 
-![Alt text](https://github.com/EdwardBrodskiy/MandelBrotSet/blob/master/Sample%20images/set%20of%204.png)
+![Set of 4 examples](https://github.com/EdwardBrodskiy/MandelBrotSet/blob/master/Sample%20images/set%20of%204.png)
 
 <b> Functionality: </b>
 
@@ -20,7 +20,7 @@ This is a mandelbrot/ buddahbrot renderer created using cpp and sfml. Based on t
 
 resolution 1920 by 1080p
 
-f(z, c) is applied 500 times
+f(z, c) is applied 128 times per pixel
 
 center is at 0 + 0i
 
@@ -32,7 +32,7 @@ about it.
 <b> Samples: </b>
 Also avliable under the sample images folder
 
-![Alt text](https://github.com/EdwardBrodskiy/MandelBrotSet/blob/master/Sample%20images/mandelbrot%201080%20hue.png)
+![Mandelbrot Set](https://github.com/EdwardBrodskiy/MandelBrotSet/blob/master/Sample%20images/mandelbrot%201080%20hue.png)
 
-![Alt text](https://github.com/EdwardBrodskiy/MandelBrotSet/blob/master/Sample%20images/buddah%201080%20layered.png)
+![Buddhabrot set](https://github.com/EdwardBrodskiy/MandelBrotSet/blob/master/Sample%20images/buddah%201080%20layered.png)
 
