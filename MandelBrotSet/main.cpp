@@ -1,7 +1,6 @@
 #include <iostream>
-#include <SFML\Graphics.hpp>
+#include <SFML/Graphics.hpp>
 #include "Timer.h"
-#include "Complex.h"
 #include "Grid.h"
 #include "MandelBrot.h"
 

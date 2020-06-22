@@ -2,7 +2,7 @@
 Responsible for managing and holding a bitmap image 
 */
 #pragma once
-#include <SFML\Graphics.hpp>
+#include <SFML/Graphics.hpp>
 #include <math.h>
 
 struct Grid {
