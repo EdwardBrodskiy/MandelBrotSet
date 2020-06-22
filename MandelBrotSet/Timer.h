@@ -1,3 +1,6 @@
+/* Timer Object
+times if a certain amount of time has passed 
+*/
 #pragma once
 #include <chrono>
 
@@ -11,8 +14,8 @@ public:
 
 	Timer();
 
-	bool has_elapsed(int millis);
-	void reset();
+	bool has_elapsed(int millis); // checks if the amount of millis(milliseconds) has passed since last reset
+	void reset(); // resets the timer
 
 };
 
