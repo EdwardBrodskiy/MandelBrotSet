@@ -135,7 +135,6 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MandelBrot.cpp" />
     <ClCompile Include="Timer.cpp" />
-    <ClCompile Include="useful_garbage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Grid.h" />
